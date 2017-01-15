@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="FileHostingService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_IFileHostingService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1">
+        </msb:BinaryEncoding>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256>
+                </sp:Basic256>
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict>
+                </sp:Strict>
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing>
+        </wsaw:UsingAddressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/FileHostingService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IFileHostingService_RegistrNewUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrNewUser" />
+  </wsdl:message>
+  <wsdl:message name="IFileHostingService_RegistrNewUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrNewUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFileHostingService_CheckEnterUserPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckEnterUserPassword" />
+  </wsdl:message>
+  <wsdl:message name="IFileHostingService_CheckEnterUserPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckEnterUserPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFileHostingService_UpdateFileInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateFileInfo" />
+  </wsdl:message>
+  <wsdl:message name="IFileHostingService_UpdateFileInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateFileInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFileHostingService_DeleteFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFile" />
+  </wsdl:message>
+  <wsdl:message name="IFileHostingService_DeleteFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFileHostingService_AddNewFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewFile" />
+  </wsdl:message>
+  <wsdl:message name="IFileHostingService_AddNewFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFileHostingService_DownloadFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:DownloadFile" />
+  </wsdl:message>
+  <wsdl:message name="IFileHostingService_DownloadFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DownloadFileResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IFileHostingService">
+    <wsdl:operation name="RegistrNewUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileHostingService/RegistrNewUser" message="tns:IFileHostingService_RegistrNewUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileHostingService/RegistrNewUserResponse" message="tns:IFileHostingService_RegistrNewUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckEnterUserPassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileHostingService/CheckEnterUserPassword" message="tns:IFileHostingService_CheckEnterUserPassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileHostingService/CheckEnterUserPasswordResponse" message="tns:IFileHostingService_CheckEnterUserPassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFileInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileHostingService/UpdateFileInfo" message="tns:IFileHostingService_UpdateFileInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileHostingService/UpdateFileInfoResponse" message="tns:IFileHostingService_UpdateFileInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileHostingService/DeleteFile" message="tns:IFileHostingService_DeleteFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileHostingService/DeleteFileResponse" message="tns:IFileHostingService_DeleteFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNewFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileHostingService/AddNewFile" message="tns:IFileHostingService_AddNewFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileHostingService/AddNewFileResponse" message="tns:IFileHostingService_AddNewFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileHostingService/DownloadFile" message="tns:IFileHostingService_DownloadFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileHostingService/DownloadFileResponse" message="tns:IFileHostingService_DownloadFile_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetTcpBinding_IFileHostingService" type="tns:IFileHostingService">
+    <wsp:PolicyReference URI="#NetTcpBinding_IFileHostingService_policy">
+    </wsp:PolicyReference>
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RegistrNewUser">
+      <soap12:operation soapAction="http://tempuri.org/IFileHostingService/RegistrNewUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckEnterUserPassword">
+      <soap12:operation soapAction="http://tempuri.org/IFileHostingService/CheckEnterUserPassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFileInfo">
+      <soap12:operation soapAction="http://tempuri.org/IFileHostingService/UpdateFileInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFile">
+      <soap12:operation soapAction="http://tempuri.org/IFileHostingService/DeleteFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewFile">
+      <soap12:operation soapAction="http://tempuri.org/IFileHostingService/AddNewFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadFile">
+      <soap12:operation soapAction="http://tempuri.org/IFileHostingService/DownloadFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FileHostingService">
+    <wsdl:port name="NetTcpBinding_IFileHostingService" binding="tns:NetTcpBinding_IFileHostingService">
+      <soap12:address location="net.tcp://localhost:8733/FileHostingService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8733/FileHostingService</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Dns>localhost</Dns>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

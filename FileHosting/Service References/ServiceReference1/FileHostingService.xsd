@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/FileHostingService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/FileHostingService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DateBeg" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Files" nillable="true" type="tns:ArrayOfFile" />
+      <xs:element minOccurs="0" name="Login" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="ArrayOfFile">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="File" nillable="true" type="tns:File" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFile" nillable="true" type="tns:ArrayOfFile" />
+  <xs:complexType name="File">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Bytes" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="DateAdd" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileId" type="xs:int" />
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Size" type="xs:long" />
+      <xs:element minOccurs="0" name="Url" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="File" nillable="true" type="tns:File" />
+</xs:schema>
